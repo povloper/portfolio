@@ -597,6 +597,29 @@
   }
 }
 
+/* Taskbar Scrollbar Styles */
+.taskbar {
+  scrollbar-width: thin;
+  scrollbar-color: #444 var(--main-bg);
+}
+
+.taskbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.taskbar::-webkit-scrollbar-track {
+  background: var(--main-bg);
+}
+
+.taskbar::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 10px;
+}
+
+.taskbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
   .container {

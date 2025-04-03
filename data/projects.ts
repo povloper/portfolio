@@ -16,7 +16,7 @@ export const projects: Project[] = [
     title: '',
     description: 'Desarrollo de una plataforma web para la creación de vídeos inmobiliarios profesionales a partir de imágenes',
     longDescription: 'He desarrollado animmo.pro, una plataforma web que transforma imágenes en vídeos animados para el sector inmobiliario. A continuación, destaco los aspectos técnicos del proyecto:\n\n✅ Framework: Desarrollado con Next.js, que permite una renderización eficiente del lado del servidor y una experiencia de usuario optimizada.\n✅ Diseño: Implementación de Tailwind CSS para estilos consistentes y un diseño responsivo adaptable a múltiples dispositivos.\n✅ Backend y Base de Datos: Uso de Supabase para gestionar la base de datos y la autenticación de usuarios, garantizando seguridad y escalabilidad.\n✅ Control de Versiones: Gestión del código fuente mediante Git, facilitando la colaboración y el seguimiento de cambios.\n✅ Despliegue: Implementación continua (CI/CD) y despliegue automatizado con Coolify, asegurando actualizaciones rápidas y fiables.\n\nEste proyecto combina herramientas modernas para ofrecer una solución eficiente y escalable en la creación de contenido visual inmobiliario. 🚀',
-    logo: '/logos/logo_animmo.webp',
+    logo: '/logos/animmo_white.png',
     link: 'https://animmo.pro',
     slug: 'animmo-pro',
     images: [],
