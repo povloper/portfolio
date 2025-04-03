@@ -65,14 +65,17 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
     setSelectedImageIndex(index);
   };
 
-  const closeEnlargedImage = () => {
+  const closeEnlargedImage = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Evitar la propagación del evento
     setSelectedImageIndex(null);
   };
 
-  const navigateImage = (direction: 'prev' | 'next') => {
+  const navigateImage = (direction: 'prev' | 'next', e: React.MouseEvent) => {
+    e.stopPropagation(); // Evitar la propagación del evento
+    
     if (!project.images) return;
     
-    if (direction === 'prev' && selectedImageIndex && selectedImageIndex > 0) {
+    if (direction === 'prev' && selectedImageIndex !== null && selectedImageIndex > 0) {
       setSelectedImageIndex(selectedImageIndex - 1);
     } else if (direction === 'next' && selectedImageIndex !== null && selectedImageIndex < project.images.length - 1) {
       setSelectedImageIndex(selectedImageIndex + 1);
@@ -164,31 +167,41 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
       </div>
 
       {selectedImageIndex !== null && project.images && (
-        <div className={styles.imageOverlay} onClick={closeEnlargedImage}>
+        <div className={styles.imageOverlay} onClick={(e) => {
+          e.stopPropagation();  // Evitar que el clic se propague al modalOverlay
+          closeEnlargedImage(e);
+        }}>
           <img 
             src={project.images[selectedImageIndex]} 
             alt={`${project.title || 'Proyecto'} - imagen ampliada`}
             className={styles.enlargedImage}
             onClick={(e) => e.stopPropagation()}
           />
-          <button className={styles.closeEnlarged} onClick={closeEnlargedImage}>
-            <IoMdClose />
+          <button 
+            className={styles.closeEnlarged} 
+            onClick={(e) => closeEnlargedImage(e)}
+          >
+            <IoMdClose size={24} />
           </button>
+          
           <div className={styles.imageCount}>
             {selectedImageIndex + 1} / {project.images.length}
           </div>
+          
           <div className={styles.enlargedNavButtons} onClick={(e) => e.stopPropagation()}>
             <button 
               className={styles.navButton} 
-              onClick={() => navigateImage('prev')}
+              onClick={(e) => navigateImage('prev', e)}
               disabled={selectedImageIndex === 0}
+              aria-label="Imagen anterior"
             >
               <IoChevronBackOutline size={20} />
             </button>
             <button 
               className={styles.navButton} 
-              onClick={() => navigateImage('next')}
+              onClick={(e) => navigateImage('next', e)}
               disabled={selectedImageIndex === project.images.length - 1}
+              aria-label="Imagen siguiente"
             >
               <IoChevronForwardOutline size={20} />
             </button>
