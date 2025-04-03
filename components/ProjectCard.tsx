@@ -1,6 +1,5 @@
 import Image from 'next/image';
-
-import { Project } from '@/types';
+import { Project } from '@/data/projects';
 
 import styles from '@/styles/ProjectCard.module.css';
 
@@ -9,27 +8,40 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
+  const hasTitle = project.title.trim() !== '';
+
   return (
-    <a
-      href={project.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={styles.card}
-    >
-      <div className={styles.content}>
-        <div className={styles.logoWrapper}>
+    <div className={styles.card}>
+      {hasTitle ? (
+        <div className={styles.cardHeader}>
+          <div className={styles.cardHeaderLeft}>
+            <Image
+              src={project.logo}
+              alt={project.title || 'Logo del proyecto'}
+              width={32}
+              height={32}
+            />
+          </div>
+          <div className={styles.cardHeaderRight}>
+            <div className={styles.cardTitle}>{project.title}</div>
+          </div>
+        </div>
+      ) : (
+        <div className={styles.fullLogoContainer}>
           <Image
             src={project.logo}
-            alt={`${project.title} logo`}
-            width={24}
-            height={24}
-            className={styles.logo}
+            alt="Logo del proyecto"
+            width={300}
+            height={150}
+            className={styles.fullLogo}
           />
         </div>
-        <h3 className={styles.title}>{project.title}</h3>
-        <p className={styles.description}>{project.description}</p>
+      )}
+      <div className={styles.cardBody}>
+        <div className={styles.cardDescription}>{project.description}</div>
       </div>
-    </a>
+      <div className={styles.clickPrompt}>Click para más detalles</div>
+    </div>
   );
 };
 

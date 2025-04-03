@@ -2,18 +2,22 @@
   background: var(--article-bg);
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 5px;
   cursor: pointer;
   overflow: hidden;
   position: relative;
   height: 250px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.25s ease;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s, box-shadow 0.3s;
   text-decoration: none;
   color: inherit;
+  padding: 15px;
+  margin-bottom: 20px;
 }
 
 .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   border-color: var(--accent-color);
 }
 
@@ -133,4 +137,60 @@
 
 .underline:hover {
   background-size: 100% 88%;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.cardHeaderLeft {
+  margin-right: 10px;
+}
+
+.cardHeaderRight {
+  flex-grow: 1;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--foreground-color);
+}
+
+.cardDescription {
+  font-size: 0.9rem;
+  color: var(--text-color-secondary);
+  line-height: 1.5;
+}
+
+.clickPrompt {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card:hover .clickPrompt {
+  opacity: 1;
+}
+
+.fullLogoContainer {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  max-height: 120px;
+  overflow: hidden;
+}
+
+.fullLogo {
+  width: 100%;
+  height: auto;
+  max-height: 100px;
+  object-fit: contain;
 }
