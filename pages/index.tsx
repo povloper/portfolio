@@ -9,31 +9,31 @@ import styles from '@/styles/HomePage.module.css';
 export default function HomePage() {
   const [activeLineIndex, setActiveLineIndex] = useState(0);
 
-  const codeString = `const HomePage = () => {
-  const [isLoaded, setIsLoaded] = useState(true);
-  const developerInfo = {
-    name: 'Nitin Ranganath',
-    role: 'Full Stack Developer',
-    bio: 'Building modern web experiences'
-  };
+  const codeString = `public class HomePage {
+    private String name = "Josep Pou";
+    private String role = "Backend Engineer";
+    private String bio = "Disfruto desarrollando sistemas backend...";
 
-  useEffect(() => {
-    document.title = \`\${developerInfo.name} | Portfolio\`;
-    setIsLoaded(true);
-  }, []);
+    public HomePage() {
+        setPageTitle();
+    }
 
-  return (
-    <main className="hero-container">
-      <h1>{developerInfo.name}</h1>
-      <p>{developerInfo.role}</p>
-      <div className="cta">
-        <Link href="/projects">View Projects</Link>
-      </div>
-    </main>
-  );
-};
+    private void setPageTitle() {
+        // Set page title with developer name
+        System.out.println(name + " | Portfolio");
+    }
 
-export default HomePage;`;
+    public void displayInfo() {
+        System.out.println("Developer: " + name);
+        System.out.println("Role: " + role);
+        System.out.println("Bio: " + bio);
+    }
+
+    public static void main(String[] args) {
+        HomePage page = new HomePage();
+        page.displayInfo();
+    }
+}`;
 
   // Split the code into lines to track which line is active
   const codeLines = codeString.split('\n');
@@ -66,7 +66,7 @@ export default HomePage;`;
           <div className={styles.codeContainer}>
             <div className={styles.editorContent}>
               <SyntaxHighlighter 
-                language="jsx"
+                language="java"
                 style={vscDarkPlus}
                 showLineNumbers={true}
                 wrapLines={true}
@@ -90,19 +90,19 @@ export default HomePage;`;
 
         <div className={styles.infoSection}>
           <h1 className={styles.developerName}>
-            Nitin <span className={styles.accentText}>Ranganath</span>
+            Josep <span className={styles.accentText}>Pou</span>
           </h1>
 
-          <div className={styles.developerRole}>Full Stack Web Developer</div>
+          <div className={styles.developerRole}>Backend Engineer</div>
 
           <p className={styles.bio}>
-            I build elegant, responsive web applications with modern
-            technologies. Focused on clean code and intuitive user experiences.
+          Disfruto desarrollando sistemas backend y arquitecturas complejas que manejan grandes volúmenes de consultas y usuarios. 
+          Me apasionan los retos reales y diseñar soluciones eficientes y escalables con código limpio y bien estructurado.
           </p>
 
           <div className={styles.actionLinks}>
             <Link href="/projects" className={styles.primaryLink}>
-              View Projects <VscArrowRight />
+              Ver proyectos <VscArrowRight />
             </Link>
           </div>
         </div>
