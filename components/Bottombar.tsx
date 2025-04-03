@@ -5,7 +5,6 @@ import {
   VscWarning,
   VscSourceControl,
 } from 'react-icons/vsc';
-import { SiNextdotjs } from 'react-icons/si';
 
 import styles from '@/styles/Bottombar.module.css';
 
