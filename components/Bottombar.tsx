@@ -14,9 +14,7 @@ const Bottombar = () => {
     <footer className={styles.bottomBar}>
       <div className={styles.container}>
         <a
-          href="https://github.com/itsnitinr/vscode-portfolio"
-          target="_blank"
-          rel="noreferrer noopener"
+          href="#"
           className={styles.section}
         >
           <VscSourceControl className={styles.icon} />
@@ -31,8 +29,6 @@ const Bottombar = () => {
       </div>
       <div className={styles.container}>
         <div className={styles.section}>
-          <SiNextdotjs className={styles.icon} />
-          <p>Powered by Next.js</p>
         </div>
         <div className={styles.section}>
           <VscCheck className={styles.icon} />

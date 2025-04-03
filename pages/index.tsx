@@ -1,56 +1,63 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { VscArrowRight } from 'react-icons/vsc';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 import styles from '@/styles/HomePage.module.css';
 
 export default function HomePage() {
   const [activeLineIndex, setActiveLineIndex] = useState(0);
 
-  const codeLines = [
-    { code: 'const HomePage = () => {', type: 'function' },
-    {
-      code: '  const [isLoaded, setIsLoaded] = useState(true);',
-      type: 'variable',
-    },
-    { code: '  const developerInfo = {', type: 'variable' },
-    { code: "    name: 'Nitin Ranganath',", type: 'array-item' },
-    { code: "    role: 'Full Stack Developer',", type: 'array-item' },
-    { code: "    bio: 'Building modern web experiences'", type: 'array-item' },
-    { code: '  };', type: 'array-end' },
-    { code: '', type: 'blank' },
-    { code: '  useEffect(() => {', type: 'nested-function' },
-    {
-      code: '    document.title = `${developerInfo.name} | Portfolio`;',
-      type: 'return',
-    },
-    { code: '    setIsLoaded(true);', type: 'function-call' },
-    { code: '  }, []);', type: 'close' },
-    { code: '', type: 'blank' },
-    { code: '  return (', type: 'return-object' },
-    { code: '    <main className="hero-container">', type: 'object-method' },
-    { code: '      <h1>{developerInfo.name}</h1>', type: 'object-method' },
-    { code: '      <p>{developerInfo.role}</p>', type: 'object-method' },
-    { code: '      <div className="cta">', type: 'object-method' },
-    {
-      code: '        <Link href="/projects">View Projects</Link>',
-      type: 'object-method',
-    },
-    { code: '      </div>', type: 'object-method' },
-    { code: '    </main>', type: 'object-method' },
-    { code: '  );', type: 'close' },
-    { code: '};', type: 'close-function' },
-    { code: '', type: 'blank' },
-    { code: 'export default HomePage;', type: 'function-call' },
-  ];
+  const codeString = `const HomePage = () => {
+  const [isLoaded, setIsLoaded] = useState(true);
+  const developerInfo = {
+    name: 'Nitin Ranganath',
+    role: 'Full Stack Developer',
+    bio: 'Building modern web experiences'
+  };
+
+  useEffect(() => {
+    document.title = \`\${developerInfo.name} | Portfolio\`;
+    setIsLoaded(true);
+  }, []);
+
+  return (
+    <main className="hero-container">
+      <h1>{developerInfo.name}</h1>
+      <p>{developerInfo.role}</p>
+      <div className="cta">
+        <Link href="/projects">View Projects</Link>
+      </div>
+    </main>
+  );
+};
+
+export default HomePage;`;
+
+  // Split the code into lines to track which line is active
+  const codeLines = codeString.split('\n');
+  const totalLines = codeLines.length;
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveLineIndex((prev) => (prev + 1) % codeLines.length);
+      setActiveLineIndex((prev) => (prev + 1) % totalLines);
     }, 2000);
 
     return () => clearInterval(interval);
-  }, [codeLines.length]);
+  }, [totalLines]);
+
+  // Custom renderer for line highlighting
+  const lineProps = (lineNumber: number) => {
+    const isActive = lineNumber === activeLineIndex + 1;
+    return {
+      style: {
+        display: 'block',
+        backgroundColor: isActive ? 'rgba(121, 82, 179, 0.2)' : undefined,
+        borderLeft: isActive ? '3px solid #9f61e6' : '3px solid transparent'
+      }
+    };
+  };
 
   return (
     <div className={styles.heroLayout}>
@@ -58,32 +65,24 @@ export default function HomePage() {
         <div className={styles.codeSection}>
           <div className={styles.codeContainer}>
             <div className={styles.editorContent}>
-              <div className={styles.lineNumbers}>
-                {codeLines.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`${styles.lineNumber} ${
-                      index === activeLineIndex ? styles.activeLine : ''
-                    }`}
-                  >
-                    {index + 1}
-                  </div>
-                ))}
-              </div>
-
-              <div className={styles.codeEditor}>
-                {codeLines.map((line, index) => (
-                  <div
-                    key={index}
-                    className={`${styles.codeLine} ${styles[line.type]} ${
-                      index === activeLineIndex ? styles.highlightedLine : ''
-                    }`}
-                  >
-                    {line.code}
-                  </div>
-                ))}
-              </div>
-
+              <SyntaxHighlighter 
+                language="jsx"
+                style={vscDarkPlus}
+                showLineNumbers={true}
+                wrapLines={true}
+                lineProps={lineProps}
+                customStyle={{
+                  margin: 0,
+                  borderRadius: '8px',
+                  padding: '20px',
+                  backgroundColor: 'rgba(30, 30, 30, 0.95)',
+                  height: '100%',
+                  fontSize: '14px',
+                  overflow: 'auto'
+                }}
+              >
+                {codeString}
+              </SyntaxHighlighter>
               <div className={styles.overlayGlow}></div>
             </div>
           </div>
