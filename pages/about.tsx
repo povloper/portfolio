@@ -4,54 +4,44 @@ const AboutPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <h1 className={styles.title}>Nitin Ranganath</h1>
-        <div className={styles.subtitle}>Software Engineer</div>
+        <h1 className={styles.title}>Josep Pou</h1>
+        <div className={styles.subtitle}>Backend Engineer</div>
 
         <div className={styles.aboutContent}>
           <section className={styles.section}>
             <p className={styles.paragraph}>
-              Hey! I&apos;m a software engineer from Mumbai, India. I primarily
-              work with JavaScript / TypeScript and the React ecosystem.
+              Me dedico al desarrollo de sistemas backend y arquitecturas complejas que gestionan 
+              grandes volúmenes de datos y usuarios. Mi objetivo profesional es resolver retos técnicos 
+              y diseñar soluciones eficientes y escalables con código limpio y bien estructurado.
             </p>
             <p className={styles.paragraph}>
-              I&apos;m focused on frontend development with React, but
-              you&apos;ll also find me working with Node.js, MongoDB and Express
-              while building the backend for my personal projects.
-            </p>
-          </section>
-
-          <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Experience</h2>
-            <p className={styles.paragraph}>
-              Currently at <span className={styles.highlight}>Tessact</span> as
-              Software Engineer 2, working with a lean team of 4 frontend
-              engineers to build a next-gen video creation suite for the people
-              of video.
-            </p>
-            <p className={styles.paragraph}>
-              I&apos;ve been leading the development efforts for bringing
-              collaborative video reviewing and editing to the platform. I also
-              maintain our in-house component library, icon library and website.
+              Considero importante investigar y evaluar nuevas tecnologías para 
+              poder incorporarlas cuando sean adecuadas para resolver necesidades concretas.
             </p>
           </section>
 
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Writing</h2>
+            <h2 className={styles.sectionTitle}>Experiencia</h2>
             <p className={styles.paragraph}>
-              I&apos;ve had the pleasure of writing for some amazing
-              publications like{' '}
-              <span className={styles.highlight}>100ms Blog</span>,{' '}
-              <span className={styles.highlight}>LogRocket Blog</span>,{' '}
-              <span className={styles.highlight}>DEV.to</span> and more as a
-              freelance technical author.
+              Actualmente trabajo en <span className={styles.highlight}>DSET SOLUTIONS</span> como
+              Software Engineer desde septiembre de 2022, donde llevo casi 3 años 
+              desarrollando y optimizando una plataforma que recibe y procesa datos de decenas 
+              de miles de contadores y sensores.
+            </p>
+            <p className={styles.paragraph}>
+              Me encargo de mejorar la eficiencia en la escritura y consulta de bases de datos, 
+              así como de implementar microservicios para la lectura de dispositivos mediante protocolos 
+              como IEC, Modbus, Sigfox, MQTT o HTTP. Cuento además con otros 2 años de 
+              experiencia en otras empresas del sector.
             </p>
           </section>
 
           <section className={styles.section}>
-            <h2 className={styles.sectionTitle}>Beyond Code</h2>
+            <h2 className={styles.sectionTitle}>Más allá del código</h2>
             <p className={styles.paragraph}>
-              Aside from programming and writing, I like to read a good
-              dystopian novel, listen to calm piano music or just laze around.
+              Fuera del ámbito profesional, dedico tiempo a otros intereses como la 
+              electrónica, la mecánica y el bricolaje. Practico ejercicio físico de forma regular, 
+              lo que me ayuda a mantener un equilibrio personal.
             </p>
           </section>
         </div>
