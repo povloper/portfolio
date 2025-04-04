@@ -12,7 +12,7 @@ export default function HomePage() {
   const codeString = `public class HomePage {
     private String name = "Josep Pou";
     private String role = "Backend Engineer";
-    private String bio = "Disfruto desarrollando sistemas backend...";
+    private String bio = "Disfruto desarr...";
 
     public HomePage() {
         setPageTitle();
