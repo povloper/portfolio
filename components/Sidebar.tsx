@@ -4,7 +4,6 @@ import {
   VscAccount,
   VscSettings,
   VscMail,
-  VscGithubAlt,
   VscCode,
   VscFiles,
   VscEdit,
