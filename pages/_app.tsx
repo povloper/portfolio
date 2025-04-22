@@ -18,6 +18,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Layout>
       <Head title={`Josep Pou | ${pageProps.title}`} />
+
+      <Script
+        async
+        src="https://stats.repou.dev/script.js"
+        data-website-id="1e4d17f2-3fc2-4eec-9687-e7311c92015e"
+      />
+      
       <Component {...pageProps} />
     </Layout>
   );
