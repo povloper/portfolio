@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 
 import Layout from '@/components/Layout';
 import Head from '@/components/Head';
+import Script from "next/script";
 
 import '@/styles/globals.css';
 import '@/styles/themes.css';
